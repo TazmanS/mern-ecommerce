@@ -1,4 +1,4 @@
-import User from "../models/user.module.js";
+import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import { redis } from "../lib/redis.js";
 
@@ -144,4 +144,10 @@ export const refreshToken = async (req, res) => {
   }
 };
 
-export const getProfile = async (req, res) => {};
+export const getProfile = async (req, res) => {
+  try {
+    res.json(req.user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
