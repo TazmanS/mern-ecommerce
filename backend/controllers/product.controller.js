@@ -57,7 +57,7 @@ export const createProduct = async (req, res) => {
 
     res.status(201).json(product);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -81,7 +81,7 @@ export const deleteProduct = async (req, res) => {
 
     res.json({ message: "Product deleted successfully." });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -104,7 +104,7 @@ export const getRecommendedProducts = async (req, res) => {
 
     res.json(products);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -114,7 +114,7 @@ export const getProductsByCategory = async (req, res) => {
     const products = await Product.find({ category });
     res.json(products);
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -130,7 +130,7 @@ export const toggleFeaturedProduct = async (req, res) => {
       res.status(404).send({ message: "Product not found" });
     }
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 

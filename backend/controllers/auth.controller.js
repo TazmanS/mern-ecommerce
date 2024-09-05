@@ -60,7 +60,7 @@ export const signUp = async (req, res) => {
       role: user.role,
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
       res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -104,7 +104,7 @@ export const logout = async (req, res) => {
     res.clearCookie("refreshToken");
     res.json({ message: "User logged in successfully" });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -140,7 +140,7 @@ export const refreshToken = async (req, res) => {
 
     res.json({ message: "Token refresh successfully" });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
